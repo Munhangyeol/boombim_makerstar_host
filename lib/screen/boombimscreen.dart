@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'package:percent_indicator/linear_percent_indicator.dart';
 class BoombimScreen extends StatefulWidget {
   const BoombimScreen({Key? key}) : super(key: key);
 
@@ -8,6 +8,7 @@ class BoombimScreen extends StatefulWidget {
 }
 
 class _BoombimScreenState extends State<BoombimScreen> {
+  double percentValue=0.5;
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -71,7 +72,7 @@ class _BoombimScreenState extends State<BoombimScreen> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
 
-                        Text('유캔두잇 세종대점',style: TextStyle( fontFamily: 'InterBold',fontSize: 26,
+                        Text('유캔두잇 세종대점',style: TextStyle( fontFamily: 'Inter_Bold',fontSize: 26,
                          color:Colors.black,fontWeight: FontWeight.w700),
                         ),
                   Text('서울 광진구 능동로 209 세종대학교 광개토관 15층',style: TextStyle(fontSize: 13,
@@ -129,6 +130,100 @@ class _BoombimScreenState extends State<BoombimScreen> {
                   color:Color(0xffF2F2F2)
               ),
 
+              Container(
+
+                width: size.width,
+                height: size.height*0.13,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Container(
+                      width:size.width,
+                      height: size.height*0.03,
+
+                    ),
+                    Text("    혼잡도",style: TextStyle(fontSize: 19,fontFamily: "InterSemiBold",
+                        color: Colors.black,
+                        fontWeight:FontWeight.w600)),
+                    Container(
+                      width: size.width,
+                      height: size.height*0.02,
+                    ),
+                    LinearPercentIndicator(
+
+                      alignment: MainAxisAlignment.center,
+                      percent: percentValue,
+                      lineHeight: 5,
+                      backgroundColor: Color(0xFFD9D9D9),
+                      progressColor: Color(0xFFFFCD4A),
+                      width: size.width*0.95,
+                      ),
+                    Container(
+                      width: size.width,
+                      height: size.height*0.01,
+                    ),
+                    Text("     테이블 30개 중 10개 사용중",style: TextStyle(fontWeight:
+                    FontWeight.w500,fontSize: 14,color: Color(0xff949494)),
+
+                    ),
+
+
+                  ],
+                ),
+
+              ),
+              Container(
+                width:size.width,
+                height: size.height*0.12,
+
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                  Container(
+                  width:size.width,
+                  height: size.height*0.03,
+
+                ),
+                    Text("    영업시간",style: TextStyle(fontSize: 19,fontFamily: "InterSemiBold",
+                        color: Colors.black,
+                        fontWeight:FontWeight.w600)),
+                    Container(
+                      width: size.width,
+                      height: size.height*0.02,
+                    ),
+                    Text("     10:00 ~ 18:00",style: TextStyle(fontWeight:
+                    FontWeight.w600,fontSize: 16,color: Color(0xff949494)),
+
+                    ),
+
+
+]
+                ),
+              ),
+              Container(
+                width: size.width,
+                height: size.height*0.01,
+              ),
+              Container(
+                width:size.width,
+                height:size.height*0.13,
+              child:Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children:[
+              Text("    전화번호",style: TextStyle(fontSize: 19,fontFamily: "InterSemiBold",
+                  color: Colors.black,
+                  fontWeight:FontWeight.w600)),
+              Container(
+                width: size.width,
+                height: size.height*0.02,
+              ),
+              Text("     02-1234-5678",style: TextStyle(fontWeight:
+              FontWeight.w600,fontSize: 16,color: Color(0xff949494)),
+
+              ),
+                ]
+              ),
+              ),
             ],
           ),
         ),
