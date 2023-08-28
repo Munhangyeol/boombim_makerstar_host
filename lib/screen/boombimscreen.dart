@@ -9,6 +9,18 @@ class BoombimScreen extends StatefulWidget {
 
 class _BoombimScreenState extends State<BoombimScreen> {
   double percentValue=0.5;
+  String phoneNumber="02-1234-5678";
+  String timeCurrentDay="10:00 ~ 18:00";
+  int totalTableNumber=30;
+  int occupyTableNumber=10;
+  void increaseProgress(){
+    setState(() {     //setState를 이용해서 상태변경을 알리고 UI를 다시 그려줌.
+      percentValue+=0.1;  //별표시를 클릭시에 혼잡도가 증가함.
+      if(percentValue>=1){
+        percentValue=0.1;
+      }
+    });
+  }
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -85,7 +97,7 @@ class _BoombimScreenState extends State<BoombimScreen> {
                     ),
 
                     IconButton(
-                        onPressed: (){}, icon: Icon(
+                        onPressed: increaseProgress, icon: Icon(
 
 
                         Icons.star,
@@ -162,7 +174,7 @@ class _BoombimScreenState extends State<BoombimScreen> {
                       width: size.width,
                       height: size.height*0.01,
                     ),
-                    Text("     테이블 30개 중 10개 사용중",style: TextStyle(fontWeight:
+                    Text("     테이블 $totalTableNumber개 중 $occupyTableNumber개 사용중",style: TextStyle(fontWeight:
                     FontWeight.w500,fontSize: 14,color: Color(0xff949494)),
 
                     ),
@@ -174,14 +186,14 @@ class _BoombimScreenState extends State<BoombimScreen> {
               ),
               Container(
                 width:size.width,
-                height: size.height*0.12,
+                height: size.height*0.15,
 
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                   Container(
                   width:size.width,
-                  height: size.height*0.03,
+                  height: size.height*0.04,
 
                 ),
                     Text("    영업시간",style: TextStyle(fontSize: 19,fontFamily: "InterSemiBold",
@@ -189,20 +201,28 @@ class _BoombimScreenState extends State<BoombimScreen> {
                         fontWeight:FontWeight.w600)),
                     Container(
                       width: size.width,
-                      height: size.height*0.02,
+                      height: size.height*0.005,
                     ),
-                    Text("     10:00 ~ 18:00",style: TextStyle(fontWeight:
-                    FontWeight.w600,fontSize: 16,color: Color(0xff949494)),
+                    Row(
 
-                    ),
+                      children:[
+                        Text("     $timeCurrentDay",style: TextStyle(fontWeight:
+                        FontWeight.w600,fontSize: 16,color: Color(0xff949494)),
+
+                        ),
+
+                        IconButton(onPressed: (){}, icon: Icon(Icons.expand_more))
+                      ]
 
 
+
+                    )
 ]
                 ),
               ),
               Container(
                 width: size.width,
-                height: size.height*0.01,
+                height: size.height*0.02,
               ),
               Container(
                 width:size.width,
@@ -217,7 +237,7 @@ class _BoombimScreenState extends State<BoombimScreen> {
                 width: size.width,
                 height: size.height*0.02,
               ),
-              Text("     02-1234-5678",style: TextStyle(fontWeight:
+              Text("     $phoneNumber",style: TextStyle(fontWeight:
               FontWeight.w600,fontSize: 16,color: Color(0xff949494)),
 
               ),
